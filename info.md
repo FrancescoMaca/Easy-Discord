@@ -16,6 +16,6 @@
 - ... 
 
 ## Specifications and why we are using each framework
-- **# React** 
-- **Blockly**
-- **Puppeteer**
+- **React** For the UI
+- **Blockly** Library required to create code blocks
+- **Puppeteer** Used to automate bot creation and generally reduce clicks required to create a new bot.  
