@@ -16,6 +16,6 @@
 - ... 
 
 ## Specifications and why we are using each framework
--**React** 
--**Blockly**
--**Puppeteer**
+- **React** 
+- **Blockly**
+- **Puppeteer**
