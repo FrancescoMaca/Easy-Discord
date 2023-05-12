@@ -18,4 +18,9 @@
 ## Specifications and why we are using each framework
 - **React** For the UI
 - **Blockly** Library required to create code blocks
-- **Puppeteer** Used to automate bot creation and generally reduce clicks required to create a new bot.  
+- **Puppeteer** Used to automate bot creation and generally reduce clicks required to create a new bot.   
+
+## Concerns 
+- **Puppeteer** The Puppeteer library will have to go through maticulous regulation in order to confirm that we adhere to 
+Discord's terms of service to prevent spam. Removing the possibility for a user to generate more than one instance of a bot 
+inside a workspace may be a solution. We may also require a wait period before we allow the user to add another bot. 
