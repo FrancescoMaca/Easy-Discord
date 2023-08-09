@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyDiscord</title>
+</head>
+<body>
+    <a href="">
+        <button>Log In with Discord</button>
+    </a>
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #444444;
+
+            height: 100vh;
+        }
+
+        button {
+            padding: 1rem;
+            color: antiquewhite;
+            background-color: rgb(69, 69, 191);
+        }
+    </style>
+
+    <script defer>
+        const appID = "1136051404579020820"
+        const url = `https://discord.com/api/oauth2/authorize?client_id=${appID}&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fauth%2F&response_type=code&scope=identify%20guilds`
+        
+        document.getElementsByTagName('a').item(0).href = url
+    </script>
+</body>
+</html>

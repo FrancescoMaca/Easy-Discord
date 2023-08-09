@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyDiscord</title>
+</head>
+<body>
+    <p>You are going to be redirected...</p>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #333;
+            height: 100vh;
+        }
+
+        p {
+            font-size: larger;
+        }
+    </style>
+    <script defer>
+        const fragment = new URLSearchParams(window.location.search);
+        const authCode = fragment.get('code')
+
+        if (!authCode) {
+            window.location.href = '/'
+        }
+
+        fetch('/api/auth', {
+            method: 'POST',
+            credentials: "include",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                code: authCode
+            }),
+        }).then(res => res.json()).then(res => {
+            window.location.href = res.redirect_url
+        })
+        .catch(err => console.log(err))
+    </script>
+</body>
+</html>

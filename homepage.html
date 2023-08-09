@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyDiscord</title>
+</head>
+<body>
+    <h1>Welcome to EasyDiscord, <span id="name"></span></h1>
+    <img id="avatar">
+
+    <ul>
+        <li id="server-list"></li>
+    </ul>
+
+    <a href="https://discord.com/api/oauth2/authorize?client_id=1136051404579020820&permissions=67584&scope=bot" target="_blank" class="button-link">
+        Add bot to your server
+    </a>
+
+    <button id="logout">logout</button>
+    <style>
+        body {
+            background: #333;
+        }
+
+        .button-link {
+            display: block;
+            width: fit-content;
+            color: white;
+            text-decoration: none;
+        }
+
+        .button-link:hover {
+            background-color: gray;
+        }
+    </style>
+    <script defer>
+
+        document.getElementById('logout').addEventListener('click', () => {
+            fetch('/api/logout').then(res => res.json())
+            .then(res => window.location.href = res.redirect_url)
+            .catch(err => console.log('logout failed: ', err))
+        })
+
+        fetch('/api/users').then(d => d.json())
+        .then(data => {
+            document.getElementById('name').innerText = data.global_name + "#" + data.discriminator
+            document.getElementById('avatar').setAttribute('src', `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.jpg`)
+        }).catch(err => console.log('catched: ', err))
+
+        fetch('/api/users/servers').then(data => data.json())
+        .then(data => Array.from(data).filter(d => d.owner))
+        .then(server => {
+            for(let s of server) {
+                let li = document.createElement('li')
+                li.innerText = s.name
+                document.getElementById('server-list').appendChild(li)
+            }
+        }).catch(err => console.log('catched: ', err))
+    </script>
+</body>
+</html>
