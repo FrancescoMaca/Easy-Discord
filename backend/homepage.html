@@ -44,7 +44,7 @@
 
         fetch('/api/users').then(d => d.json())
         .then(data => {
-            document.getElementById('name').innerText = data.global_name + "#" + data.discriminator
+            document.getElementById('name').innerText = data.global_name
             document.getElementById('avatar').setAttribute('src', `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.jpg`)
         }).catch(err => console.log('catched: ', err))
 

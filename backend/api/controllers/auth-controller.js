@@ -2,10 +2,10 @@
 const authController = {
     async logout(req, res) {
         try {
-        res.clearCookie('accessToken')
-        res.status(200).json({redirect_url: '/'})
+            res.clearCookie('accessToken')
+            res.status(200).json({redirect_url: '/'})
         } catch (error) {
-        res.status(500).json({error: 'an error occurred during logout'})
+            res.status(500).json({error: 'an error occurred during logout'})
         }
     },
 
@@ -23,7 +23,7 @@ const authController = {
             method: 'POST',
             body: params,
             headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
         })
 
