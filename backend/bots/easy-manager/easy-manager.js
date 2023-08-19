@@ -15,14 +15,17 @@ const client = new discord.Client({
 const commandPrefix = '!'
 
 client.commands = new discord.Collection()
-client.commands.set('help', EasyManagerCommands.help)
+
+for (const command of EasyManagerCommands) {
+    client.commands.set(command.name, command.run)
+}
 
 client.on(Events.ClientReady, () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Logged in as the beautiful ${client.user.tag}!`);
 })
 
 client.on(Events.MessageCreate, async msg => {
-
+    // Message handler
     if (msg.author.bot || !msg.content.startsWith(commandPrefix)) {
         return
     }
@@ -31,7 +34,7 @@ client.on(Events.MessageCreate, async msg => {
     const command = args.shift().toLowerCase()
 
     const action = client.commands.get(command)
-
+    
     if (action) {
         action(msg, args)
     } else {

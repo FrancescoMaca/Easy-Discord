@@ -1,4 +1,4 @@
-
-export async function welcome(message, args) {
-
+export default {
+    name: 'otherCommandName',
+    async run() {   /* Code */   }
 }

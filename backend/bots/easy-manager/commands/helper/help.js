@@ -1,4 +1,6 @@
-
-export async function help(message, args) {
-
+export default {
+    name: 'help',
+    async run() {
+        // Executes the LOCAL command (NOT INTERACTION)
+    }
 }
