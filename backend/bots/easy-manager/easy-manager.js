@@ -1,9 +1,13 @@
-import discord, {GatewayIntentBits, Events} from 'discord.js'
-import { EasyManagerCommands } from './commands/easy-manager-commands.js'
 import dotenv from 'dotenv'
+import discord, { GatewayIntentBits, Events } from 'discord.js'
+import { InteractionHandler } from './interactions/interaction-handler.js'
+import { CommandHandler } from './commands/command-handler.js'
+import { onConnection } from './system/connection.js'
 
+// Initialize the .env file
 dotenv.config()
 
+// Creates the client with its permission
 const client = new discord.Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -12,38 +16,15 @@ const client = new discord.Client({
     ]
 })
 
-const commandPrefix = '!'
-
+// Initializes collections where both interactions and 
+// commands are going to be stored
 client.commands = new discord.Collection()
+client.interactions = new discord.Collection()
 
-for (const command of EasyManagerCommands) {
-    client.commands.set(command.name, command.run)
-}
+// Binds client events with handlers
+client.on(Events.ClientReady, () => onConnection(client))
+client.on(Events.InteractionCreate, InteractionHandler)
+client.on(Events.MessageCreate, CommandHandler)
 
-client.on(Events.ClientReady, () => {
-    console.log(`Logged in as the beautiful ${client.user.tag}!`);
-})
-
-client.on(Events.MessageCreate, async msg => {
-    // Message handler
-    if (msg.author.bot || !msg.content.startsWith(commandPrefix)) {
-        return
-    }
-
-    const args = msg.content.slice(commandPrefix.length).trim().split(/ +/)
-    const command = args.shift().toLowerCase()
-
-    const action = client.commands.get(command)
-    
-    if (action) {
-        action(msg, args)
-    } else {
-        await msg.channel.send({
-            content: `\`\`\`The command '${command}' doesn't exist!\nIf you want to check out the available commands, you can use the !help command.\`\`\``,
-            ephemeral: true 
-        })
-    }
-})
-
-
+// Connects the client to the discord server
 client.login(process.env.BOT_TOKEN)
