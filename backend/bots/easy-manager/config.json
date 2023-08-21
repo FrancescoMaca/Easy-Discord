@@ -1,3 +1,5 @@
 {
-    "commandPrefix": "!"
+    "commandPrefix": "!",
+    
+    "commandRootPath": "/bots/easy-manager/commands/handlers/"
 }

@@ -23,5 +23,5 @@ const initializeInteractions = async () => {
 }
 
 const initializeCommands = async () => {
-
+    
 }

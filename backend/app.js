@@ -14,7 +14,7 @@ const port = 3000
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
-app.use(express.static(join(dirname('.'), 'server')));
+app.use(express.static(join(dirname('.'), './server')));
 app.use(router);
 
 app.listen(port, () => {
