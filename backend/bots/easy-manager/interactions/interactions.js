@@ -1,7 +1,18 @@
-import ping from "./cat1/ping.js"
+import config from '../config.json' assert { type: 'json' }
+import { resolve, join} from 'path'
+import { walk } from '../helper.js'
 
-export default [{
-    name: 'ping',
-    description: 'A reply to pong!',
-    data: ping.data,
-}];
+/* Loads all the interactions in the config path */
+export default await (async () => {
+    const files = walk(join(resolve('.'), config.interactionRootPath))
+    const interactions = { }
+
+    for (const file of files) {
+        const { default: interaction } = await import(file)
+
+        interactions[interaction.name] = interaction
+        console.log(`> The interaction '${interaction.data.name}' has been added to the interaction list.`);
+    }
+
+    return interactions
+})()

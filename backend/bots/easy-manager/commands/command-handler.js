@@ -2,14 +2,14 @@ import { EmbedBuilder } from 'discord.js'
 import config from '../config.json' assert { type: 'json' }
 
 // Method that runs all the commands if they are valid
-export const CommandHandler = async (message, client) => {
+export const CommandHandler = async (message, commands) => {
 
     if (message.author.bot || !message.content.startsWith(config.commandPrefix)) return;
 
     const args = message.content.slice(config.commandPrefix.length).trim().split(/ +/)
     const command = args.shift().toLowerCase()
 
-    const action = client.commands.get(command)
+    const action = commands.get(command)
 
     if (!action) {
         await commandNotFound(message)

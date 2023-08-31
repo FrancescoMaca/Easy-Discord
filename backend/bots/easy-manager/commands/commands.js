@@ -1,30 +1,18 @@
 import config from '../config.json' assert { type: 'json' }
-import fs from 'fs'
-import path, { resolve, join} from 'path'
+import { resolve, join} from 'path'
+import { walk } from '../helper.js'
 
-const walk = (dir, files = []) => {
-    const dirFiles = fs.readdirSync(dir)
-
-    for (const f of dirFiles) {
-        const stat = fs.lstatSync(dir + path.sep + f)
-        if (stat.isDirectory()) {
-            walk(dir + path.sep + f, files)
-        } else {
-            files.push(dir + path.sep + f)
-        }
-    }
-
-    return files
-}
-
+/* Loads all the command in the path */
 export default await (async () => {
     const files = walk(join(resolve('.'), config.commandRootPath))
+    const commands = []
 
     for (const file of files) {
-        const command = await import(file)
+        const { default: command} = await import(file)
 
-        console.log(command)
+        commands.push(command)
+        console.log(`> The command '${command.name}' has been added to the command list.`);
     }
 
-    return []
+    return commands
 })()

@@ -21,15 +21,15 @@ const client = new discord.Client({
 // Initializes collections where both interactions and 
 // commands are going to be stored
 client.commands = new discord.Collection(commands.map(cmd => [cmd.name, cmd.run]))
-client.interactions = new discord.Collection(interactions.map(inter => [inter.name, inter.run]))
+client.interactions = new discord.Collection(Object.values(interactions).map(int => [int.name, int.execute]))
 
 // Binds client events with handlers
 client.on(Events.ClientReady, () => onConnection(client))
-client.on(Events.InteractionCreate, InteractionHandler)
-client.on(Events.MessageCreate, msg => CommandHandler(msg, client))
-client.on(Events.MessageCreate, msg => {
-    console.log(msg.channel.permissionsFor(msg.author))
-})
+client.on(Events.InteractionCreate, int => InteractionHandler(int))
+client.on(Events.MessageCreate, msg => CommandHandler(msg, client.commands))
+// client.on(Events.MessageCreate, msg => {
+//     console.log(msg.channel.permissionsFor(msg.author))
+// })
 
 // Connects the client to the discord server
 client.login(process.env.BOT_TOKEN)
