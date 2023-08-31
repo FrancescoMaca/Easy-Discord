@@ -6,22 +6,20 @@ export const onConnection = async (client) => {
 
     // Once the bot is connect it's going to load all the commands and interactions
     await initializeInteractions()
-    await initializeCommands()
 }
 
 const initializeInteractions = async () => {
-    try {
-        const rest = new REST().setToken(process.env.BOT_TOKEN);
 
-        await rest.put(
+    try {
+        const rest = new REST().setToken(process.env.BOT_TOKEN)
+
+        const res = await rest.put(
             Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
-            { body: interactions },
-        );
+            {
+                body: interactions
+            }
+        )
     } catch (error) {
         console.error(error);
     }
-}
-
-const initializeCommands = async () => {
-    
 }
