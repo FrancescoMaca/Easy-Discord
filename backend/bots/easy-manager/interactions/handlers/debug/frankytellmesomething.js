@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
 
-const interactionName = 'ping1'
+const interactionName = 'frankytellmesomething'
 const interactionDescription = 'the first ping command'
 
 export default {
@@ -10,6 +10,6 @@ export default {
 		.setName(interactionName)
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
-		await interaction.reply('Pong! x1');
+		await interaction.reply('Hello veve!');
 	},
 };
