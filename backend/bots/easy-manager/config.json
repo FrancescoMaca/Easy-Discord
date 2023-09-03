@@ -1,5 +1,6 @@
 {
     "commandPrefix": "!",
+    "commandOptionPrefix": "-",
     "commandRootPath": "/bots/easy-manager/commands/handlers/",
     "interactionRootPath": "/bots/easy-manager/interactions/handlers"
 }

@@ -16,16 +16,16 @@ export const CommandHandler = async (message, commands) => {
         return
     }
 
-    await action()
+    await action(args, message.channel)
 }
 
 export const commandNotFound = async message => {
     if (message.author.bot) return
 
     const data = new EmbedBuilder()
-    .setColor('#FF0000')
-    .setTitle('Error')
-    .setDescription('Command not found');
+        .setColor('#FF0000')
+        .setTitle('Error')
+        .setDescription(`Command not found, type \`${config.commandPrefix}help\` to see the available options.`);
 
     await message.channel.send({ embeds: [data]})
 }
