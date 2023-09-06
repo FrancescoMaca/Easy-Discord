@@ -56,7 +56,7 @@ Join our community of Discord enthusiasts and developers on our official Discord
 
 ## License
 
-Easy-Discord is released under the [MIT License](LICENSE.md).
+Easy-Discord is released under the [MIT License](LICENSE).
 
 ---
 
