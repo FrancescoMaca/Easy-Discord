@@ -19,7 +19,5 @@ export default {
 
             await channel.send({ embeds: [errorMessage]})
         }
-
-
     }
 }
