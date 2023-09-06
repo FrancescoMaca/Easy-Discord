@@ -4,8 +4,33 @@ Welcome to EasyDiscord, the official repository for an open-source project aimed
 
 ## About EasyDiscord
 
-EasyDiscord is a project initiated by [Your Name] with the goal of providing a comprehensive solution for Discord server management. Whether you're a server owner, administrator, or a Discord enthusiast, EasyDiscord aims to make your experience more enjoyable and efficient.
+EasyDiscord is a project initiated by Francesco Macaluso with the goal of providing a comprehensive solution for Discord server management. Whether you're a server owner, administrator, or a Discord enthusiast, EasyDiscord aims to make your experience more enjoyable and efficient.
 
+## Timeline
+The following task are ordered chronologically, so you shouldn't work on the next step if the previous was is not done. The parts that can be done in parallel are marked by an '**\***'. <br>
+This is what the current goals are:
+
+**Webpage**:
+To have access to the Figma project click [here](https://www.figma.com/file/CUFgIn8IB08OqN0sUSQJMz/Easy-Discord---0001---External?type=design&mode=design&t=D0rYs0AyHaDIPrcd-1)
+The only preference there are on this website is the use of Tailwind and Nextjs, nothing else.
+- [ ] Make the wireframe of the mobile and desktop app.
+- [ ] Make the design of the mobile and desktop app.
+
+**EasyDiscord Bot**:
+- [x] Created a working bot
+- [x] Create Interaction Loaders: loads all the intent found in the `interactions/handlers/` folder.
+- [x] Create Command Loader: loads all the messages found in the `commands/handlers/` folder.
+**WARNING:** The main difference between these two is that intents are used for external services (outside Discord), (i.e. Fetch a song from YouTube, etc...). On the other hand messages are used to
+handle the main commands that will be affect changes in the server settings (i.e. Create backups, edit server permissions, adding roles, loading templates, etc...)
+Implement the following commands:
+- [ ] `!help`: shows all the commands with their different options and description
+- [ ] `!backup`: creates a backup of the server. (1)
+- [ ] `!hide-channel` / `!show-channell`: hides or displays a channel for a particular individual or role.
+- [ ] `!hide-category` / `!show-category`: hides or display an entire chategory for a particular individual or role.
+- [ ] `!perms`: main command to handle permissions of individuals or roles.
+- [ ] `!roles`: main command to create, remove roles. These commands have the benefit of managing automatically
+- [ ] `!settings`: manages some of the server
+- [ ] TO BE FINISHED
 ## How to Contribute
 
 We appreciate and welcome contributions from the community to help make EasyDiscord even better. If you'd like to get involved, here's how you can contribute:
