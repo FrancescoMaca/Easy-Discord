@@ -30,7 +30,10 @@ Implement the following commands:
 - [ ] `!perms`: main command to handle permissions of individuals or roles.
 - [ ] `!roles`: main command to create, remove roles. These commands have the benefit of managing automatically
 - [ ] `!settings`: manages some of the server
-- [ ] TO BE FINISHED
+Implement the following interactions:
+- [ ] `/gpt`: ask a question to ChatGPT.
+- [ ] `/img`: returns the top image result for the given query.
+- [ ] More to be added
 ## How to Contribute
 
 We appreciate and welcome contributions from the community to help make EasyDiscord even better. If you'd like to get involved, here's how you can contribute:
