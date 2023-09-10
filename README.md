@@ -20,6 +20,7 @@ The only preference there are on this website is the use of Tailwind and Nextjs,
 - [x] Created a working bot
 - [x] Create Interaction Loaders: loads all the intent found in the `interactions/handlers/` folder.
 - [x] Create Command Loader: loads all the messages found in the `commands/handlers/` folder. <br>
+--------
 **WARNING:** The main difference between these two is that intents are used for external services (outside Discord), (i.e. Fetch a song from YouTube, etc...). On the other hand messages are used to
 handle the main commands that will be affect changes in the server settings (i.e. Create backups, edit server permissions, adding roles, loading templates, etc...)
 Implement the following commands:
